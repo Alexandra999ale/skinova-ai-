@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
   <header>
     <a class="logo" href="index.html">Skinova AI ✦</a>
 
@@ -18,42 +19,64 @@
       <a href="progress.html">Progres</a>
       <a href="assistant.html">Asistent AI</a>
       <a href="pricing.html">Abonament</a>
+      <a href="profile.html">👤 Profil</a>
     </nav>
   </header>
 
   <main class="page">
+
     <h2>AI Skin Analysis</h2>
 
     <p class="subtitle">
-      Încarcă o fotografie pentru a simula analiza vizuală a pielii.
-      Rezultatele sunt orientative și nu reprezintă diagnostic medical.
+      Încarcă o fotografie pentru a genera o analiză orientativă a pielii.
+      Rezultatele sunt estimative și nu reprezintă diagnostic medical.
     </p>
 
     <div class="upload-box">
+
       <div class="upload-area">
-        <h3 style="margin-bottom:15px; color:#e84f9b;">
+
+        <h3 style="
+          margin-bottom:15px;
+          color:#e84f9b;
+        ">
           Upload imagine
         </h3>
 
-        <p style="margin-bottom:18px;">
+        <p style="
+          margin-bottom:18px;
+        ">
           Pentru rezultate mai clare, recomandăm lumină naturală și lipsa filtrelor.
         </p>
 
-        <input type="file" accept="image/*" onchange="startAnalysis()" />
+        <input
+          type="file"
+          accept="image/*"
+          onchange="startAnalysis()"
+        />
+
       </div>
 
-      <div id="loading" style="display:none;">
+      <div id="loading"
+        style="
+          display:none;
+          margin-top:28px;
+        ">
+
         <h3 style="color:#e84f9b;">
           Analiza AI este în desfășurare...
         </h3>
 
-        <p style="margin-top:10px;">
-          Detectăm sebum, textură, roșeață și imperfecțiuni.
+        <p style="margin-top:12px;">
+          Detectăm sebum, textură, roșeață și imperfecțiuni vizibile.
         </p>
+
       </div>
 
       <div class="results" id="results">
+
         <div class="score-grid">
+
           <div class="score">
             <span>Sebum</span>
             <strong>ridicat</strong>
@@ -73,23 +96,63 @@
             <span>Textură</span>
             <strong>neuniformă</strong>
           </div>
+
         </div>
 
         <div class="card">
+
           <h3>Explicație AI</h3>
 
           <p>
             AI-ul a detectat exces de sebum în zona T și mici imperfecțiuni active.
-            De asemenea, textura pielii pare ușor neuniformă, iar roșeața indică posibilă sensibilitate temporară.
+            De asemenea, textura pielii pare ușor neuniformă, iar roșeața poate indica sensibilitate temporară.
           </p>
+
+        </div>
+
+        <div class="two-grid" style="margin-top:24px;">
+
+          <div class="card">
+
+            <h3>Rutină disponibilă</h3>
+
+            <p>
+              Analiza a fost salvată. Acum poți accesa rutina personalizată generată de AI.
+            </p>
+
+            <a class="btn primary" href="routine.html">
+              Vezi rutina
+            </a>
+
+          </div>
+
+          <div class="card">
+
+            <h3>Skin Journey activat</h3>
+
+            <p>
+              Prima analiză a fost salvată și poate fi utilizată pentru comparații viitoare.
+            </p>
+
+            <a class="btn primary" href="progress.html">
+              Vezi progresul
+            </a>
+
+          </div>
+
         </div>
 
         <div class="warning">
+
           Rezultatele sunt estimative și pot varia în funcție de lumină,
-          calitatea camerei și condițiile pielii din momentul fotografiei.
+          calitatea imaginii și condițiile pielii din momentul fotografiei.
+
         </div>
+
       </div>
+
     </div>
+
   </main>
 
   <footer>
@@ -97,5 +160,6 @@
   </footer>
 
   <script src="script.js"></script>
+
 </body>
 </html>
