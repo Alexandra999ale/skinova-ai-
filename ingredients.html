@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skinova AI | Ingrediente</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="index.html">Skinova AI ✦</a>
+    <nav>
+      <a href="analysis.html">Analiză</a>
+      <a href="routine.html">Rutină</a>
+      <a href="ingredients.html">Ingrediente</a>
+      <a href="progress.html">Progres</a>
+      <a href="assistant.html">Asistent AI</a>
+      <a href="pricing.html">Abonament</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h2>Ingredient Scanner</h2>
+
+    <p class="subtitle">
+      Această secțiune simulează analiza produselor pe care utilizatorul le folosește deja.
+      Skinova AI explică ingredientele importante, posibilele beneficii și combinațiile care trebuie evitate.
+    </p>
+
+    <div class="upload-box">
+      <div class="upload-area">
+        <h3 style="margin-bottom:15px; color:#e84f9b;">Încarcă produsul tău</h3>
+        <p style="margin-bottom:18px;">
+          Poți încărca o poză cu produsul sau cu lista de ingrediente.
+        </p>
+
+        <input type="file" accept="image/*" />
+        <br><br>
+        <button class="primary" onclick="scanIngredients()">Simulează analiza ingredientelor</button>
+      </div>
+
+      <div id="ingredientResult" class="results">
+        <div class="grid">
+          <div class="card">
+            <h3>Ingredient util</h3>
+            <p>
+              <strong>Acid salicilic:</strong> poate ajuta la reducerea sebumului și la curățarea porilor încărcați,
+              fiind potrivit în rutine pentru ten mixt sau gras.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Ingredient calmant</h3>
+            <p>
+              <strong>Niacinamide:</strong> susțin bariera pielii, pot reduce roșeața și ajută la echilibrarea aspectului tenului.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Avertizare</h3>
+            <p>
+              Utilizarea simultană cu alți acizi puternici sau retinoizi poate crește riscul de iritație,
+              mai ales pentru un ten sensibil.
+            </p>
+          </div>
+        </div>
+
+        <div class="warning">
+          Analiza ingredientelor este orientativă și nu înlocuiește recomandarea unui specialist.
+          Platforma explică rolul ingredientelor, dar nu oferă diagnostic medical.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Skinova AI © 2026
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
