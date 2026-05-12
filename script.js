@@ -76,3 +76,47 @@ function closeMenu() {
     menu.classList.remove("open");
   }
 }
+function fakeLogin(action) {
+  const email = document.getElementById("profileEmail");
+  const password = document.getElementById("profilePassword");
+  const status = document.getElementById("loginStatus");
+
+  if (!email || !password || !status) return;
+
+  if (email.value.trim() === "" || password.value.trim() === "") {
+    status.innerHTML = "Completează adresa de e-mail și parola.";
+    status.style.display = "block";
+    return;
+  }
+
+  localStorage.setItem("skinovaUserEmail", email.value.trim());
+
+  status.innerHTML =
+    action === "create"
+      ? "Cont creat cu succes. Trialul gratuit este activ."
+      : "Autentificare reușită. Bine ai revenit!";
+
+  status.style.display = "block";
+
+  setTimeout(() => {
+    window.location.reload();
+  }, 900);
+}
+
+function logoutUser() {
+  localStorage.removeItem("skinovaUserEmail");
+  window.location.reload();
+}
+
+window.addEventListener("load", () => {
+  const emailDisplay = document.getElementById("savedEmail");
+  const authBox = document.getElementById("authBox");
+  const accountBox = document.getElementById("accountBox");
+  const savedEmail = localStorage.getItem("skinovaUserEmail");
+
+  if (emailDisplay && authBox && accountBox && savedEmail) {
+    emailDisplay.textContent = savedEmail;
+    authBox.style.display = "none";
+    accountBox.style.display = "block";
+  }
+});
