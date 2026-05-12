@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skinova AI | Asistent AI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="index.html">Skinova AI ✦</a>
+
+    <nav>
+      <a href="analysis.html">Analiză</a>
+      <a href="routine.html">Rutină</a>
+      <a href="ingredients.html">Ingrediente</a>
+      <a href="progress.html">Progres</a>
+      <a href="assistant.html">Asistent AI</a>
+      <a href="pricing.html">Abonament</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h2>Asistent AI personalizat</h2>
+
+    <p class="subtitle">
+      Asistentul AI adresează întrebări suplimentare pentru a adapta recomandările
+      la contextul real al utilizatorului și la schimbările observate în timp.
+    </p>
+
+    <div class="chat" id="chatBox">
+      <div class="bubble ai">
+        Am observat mai multe imperfecțiuni în zona bărbiei comparativ cu analiza anterioară.
+        Ai introdus recent un produs nou în rutina ta?
+      </div>
+
+      <div class="bubble user">
+        Da, am început să folosesc un exfoliant nou acum câteva zile.
+      </div>
+
+      <div class="bubble ai">
+        Îți recomand să îl folosești doar de 2–3 ori pe săptămână și să eviți
+        combinarea cu alți acizi activi în aceeași seară.
+      </div>
+
+      <div class="bubble ai">
+        De asemenea, încearcă să observi dacă apar modificări după consumul anumitor alimente,
+        perioade de stres sau lipsa somnului.
+      </div>
+    </div>
+
+    <div class="upload-box" style="margin-top:30px;">
+      <h3 style="margin-bottom:18px; color:#e84f9b;">
+        Continuă conversația
+      </h3>
+
+      <input
+        type="text"
+        id="chatInput"
+        placeholder="Scrie un mesaj..."
+        style="
+          width:100%;
+          padding:16px;
+          border-radius:18px;
+          border:1px solid rgba(232,79,155,0.25);
+          margin-bottom:18px;
+          font-size:16px;
+          font-family:inherit;
+        "
+      />
+
+      <button class="primary" onclick="sendMessage()">
+        Trimite mesaj
+      </button>
+    </div>
+
+    <div class="warning">
+      Recomandările generate de AI sunt orientative și nu înlocuiesc
+      consultul dermatologic sau tratamentul prescris de un specialist.
+    </div>
+  </main>
+
+  <footer>
+    Skinova AI © 2026
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
