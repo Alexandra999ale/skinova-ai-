@@ -63,3 +63,16 @@ window.addEventListener("load", () => {
     modal.style.display = "flex";
   }
 });
+function openMenu() {
+  const menu = document.getElementById("sideMenu");
+  if (menu) {
+    menu.classList.add("open");
+  }
+}
+
+function closeMenu() {
+  const menu = document.getElementById("sideMenu");
+  if (menu) {
+    menu.classList.remove("open");
+  }
+}
