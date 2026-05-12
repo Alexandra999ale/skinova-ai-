@@ -39,3 +39,27 @@ function sendMessage() {
 
   input.value = "";
 }
+function closeCookieModal() {
+  const modal = document.getElementById("cookieModal");
+  if (!modal) return;
+
+  modal.style.display = "none";
+  localStorage.setItem("skinovaConsent", "accepted");
+}
+
+function rejectOptionalCookies() {
+  const modal = document.getElementById("cookieModal");
+  if (!modal) return;
+
+  modal.style.display = "none";
+  localStorage.setItem("skinovaConsent", "necessary-only");
+}
+
+window.addEventListener("load", () => {
+  const modal = document.getElementById("cookieModal");
+  const consent = localStorage.getItem("skinovaConsent");
+
+  if (modal && !consent) {
+    modal.style.display = "flex";
+  }
+});
