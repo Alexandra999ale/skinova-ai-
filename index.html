@@ -3,694 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Skinova AI</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: linear-gradient(135deg, #ffd6ea 0%, #fff5fb 45%, #d9ecff 100%);
-      color: #111;
-      overflow-x: hidden;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .background-glow {
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255, 130, 190, 0.35), transparent 35%),
-        radial-gradient(circle at 85% 20%, rgba(255, 190, 230, 0.35), transparent 30%),
-        radial-gradient(circle at 85% 80%, rgba(150, 205, 255, 0.35), transparent 35%);
-      z-index: -2;
-    }
-
-    .sparkles {
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(#fff 1px, transparent 1px),
-        radial-gradient(#ff72b6 1px, transparent 1px);
-      background-size: 70px 70px, 120px 120px;
-      opacity: 0.35;
-      z-index: -1;
-    }
-
-    header {
-      width: 100%;
-      padding: 24px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(18px);
-      background: rgba(255, 245, 251, 0.65);
-      border-bottom: 1px solid rgba(255, 120, 190, 0.2);
-    }
-
-    .logo {
-      font-size: 30px;
-      font-weight: bold;
-      color: #e84f9b;
-      letter-spacing: 0.5px;
-    }
-
-    nav a {
-      margin-left: 22px;
-      text-decoration: none;
-      color: #111;
-      font-size: 16px;
-    }
-
-    nav a:hover {
-      color: #e84f9b;
-    }
-
-    .hero {
-      min-height: 92vh;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 40px;
-      align-items: center;
-      padding: 70px 8%;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 10px 18px;
-      background: rgba(255, 255, 255, 0.65);
-      border: 1px solid rgba(232, 79, 155, 0.25);
-      border-radius: 999px;
-      color: #e84f9b;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: clamp(48px, 7vw, 92px);
-      color: #e84f9b;
-      line-height: 1;
-      margin-bottom: 24px;
-    }
-
-    .hero p {
-      font-size: 22px;
-      line-height: 1.55;
-      max-width: 660px;
-      color: #27324a;
-      margin-bottom: 34px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    button, .btn {
-      border: none;
-      cursor: pointer;
-      padding: 15px 26px;
-      border-radius: 999px;
-      font-size: 16px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.25s ease;
-      font-family: inherit;
-    }
-
-    .primary {
-      background: linear-gradient(135deg, #ff5da8, #ff9ccc);
-      color: white;
-      box-shadow: 0 12px 28px rgba(232, 79, 155, 0.32);
-    }
-
-    .secondary {
-      background: rgba(255, 255, 255, 0.8);
-      color: #111;
-      border: 1px solid rgba(232, 79, 155, 0.25);
-    }
-
-    button:hover, .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .phone-card {
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(232, 79, 155, 0.25);
-      border-radius: 42px;
-      padding: 30px;
-      box-shadow: 0 24px 60px rgba(108, 70, 120, 0.18);
-      position: relative;
-    }
-
-    .phone-screen {
-      border-radius: 34px;
-      background: linear-gradient(180deg, #fff, #ffe9f5);
-      padding: 28px;
-      min-height: 460px;
-      border: 1px solid rgba(232, 79, 155, 0.18);
-    }
-
-    .face-circle {
-      width: 180px;
-      height: 180px;
-      margin: 0 auto 22px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ffd7ec, #d9ecff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 76px;
-      box-shadow: inset 0 0 30px rgba(255,255,255,0.9);
-    }
-
-    .mini-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .mini-stat {
-      background: white;
-      border-radius: 18px;
-      padding: 16px;
-      border: 1px solid rgba(232, 79, 155, 0.15);
-    }
-
-    .mini-stat strong {
-      color: #e84f9b;
-      font-size: 24px;
-    }
-
-    section {
-      padding: 80px 8%;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 48px;
-      margin-bottom: 18px;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      max-width: 780px;
-      margin: 0 auto 50px;
-      color: #27324a;
-      font-size: 19px;
-      line-height: 1.6;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(232, 79, 155, 0.22);
-      border-radius: 30px;
-      padding: 28px;
-      box-shadow: 0 18px 45px rgba(108, 70, 120, 0.12);
-    }
-
-    .card h3 {
-      font-size: 26px;
-      margin-bottom: 16px;
-      color: #e84f9b;
-    }
-
-    .card p, .card li {
-      font-size: 17px;
-      line-height: 1.55;
-      color: #27324a;
-    }
-
-    .card ul {
-      padding-left: 18px;
-    }
-
-    .analysis-box {
-      max-width: 1050px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid rgba(232, 79, 155, 0.25);
-      border-radius: 36px;
-      padding: 34px;
-      box-shadow: 0 24px 60px rgba(108, 70, 120, 0.15);
-    }
-
-    .upload-area {
-      border: 2px dashed #ff82bd;
-      border-radius: 28px;
-      padding: 38px;
-      text-align: center;
-      background: rgba(255, 246, 251, 0.8);
-      margin-bottom: 30px;
-    }
-
-    input[type="file"] {
-      margin-top: 18px;
-    }
-
-    .results {
-      display: none;
-      margin-top: 30px;
-      animation: fadeIn 0.7s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .score-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-bottom: 26px;
-    }
-
-    .score {
-      background: white;
-      border-radius: 24px;
-      padding: 20px;
-      text-align: center;
-      border: 1px solid rgba(232, 79, 155, 0.18);
-    }
-
-    .score span {
-      display: block;
-      font-size: 14px;
-      color: #27324a;
-      margin-bottom: 8px;
-    }
-
-    .score strong {
-      color: #e84f9b;
-      font-size: 28px;
-    }
-
-    .routine {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
-
-    .warning {
-      background: #fff1f8;
-      border-left: 5px solid #e84f9b;
-      padding: 18px;
-      border-radius: 18px;
-      margin-top: 20px;
-      color: #27324a;
-      line-height: 1.55;
-    }
-
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .timeline .card {
-      text-align: center;
-    }
-
-    .assistant {
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .chat {
-      background: rgba(255,255,255,0.78);
-      border-radius: 32px;
-      padding: 28px;
-      border: 1px solid rgba(232, 79, 155, 0.22);
-    }
-
-    .bubble {
-      padding: 16px 20px;
-      border-radius: 22px;
-      margin-bottom: 14px;
-      max-width: 80%;
-      line-height: 1.5;
-      font-size: 17px;
-    }
-
-    .ai {
-      background: #ffe5f2;
-      color: #111;
-    }
-
-    .user {
-      background: #d9ecff;
-      margin-left: auto;
-      color: #111;
-    }
-
-    .pricing {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .price {
-      font-size: 54px;
-      color: #e84f9b;
-      margin: 18px 0;
-    }
-
-    footer {
-      padding: 40px 8%;
-      text-align: center;
-      color: #27324a;
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      padding: 20px;
-    }
-
-    .modal-content {
-      max-width: 700px;
-      background: white;
-      border-radius: 32px;
-      padding: 34px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-    }
-
-    .modal-content h2 {
-      color: #e84f9b;
-      font-size: 34px;
-      margin-bottom: 16px;
-    }
-
-    .modal-content p {
-      line-height: 1.6;
-      color: #27324a;
-      margin-bottom: 14px;
-      font-size: 17px;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    @media (max-width: 900px) {
-      .hero, .grid, .routine, .timeline, .pricing {
-        grid-template-columns: 1fr;
-      }
-
-      nav {
-        display: none;
-      }
-
-      .score-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .section-title {
-        font-size: 36px;
-      }
-    }
-  </style>
+  <title>Skinova AI | Home</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <div class="background-glow"></div>
-  <div class="sparkles"></div>
-
-  <div class="modal" id="disclaimerModal">
-    <div class="modal-content">
-      <h2>Atenționare importantă</h2>
-      <p>
-        Skinova AI este un prototip educațional care oferă recomandări orientative pentru îngrijirea pielii.
-        Platforma nu oferă diagnostic medical și nu înlocuiește consultul dermatologic.
-      </p>
-      <p>
-        Rezultatele pot varia în funcție de lumină, calitatea imaginii, unghiul fotografiei și datele introduse de utilizator.
-        Imaginile și informațiile încărcate sunt tratate ca date sensibile și trebuie protejate.
-      </p>
-      <button class="primary" onclick="closeModal()">Accept și continui</button>
-    </div>
-  </div>
-
   <header>
-    <div class="logo">Skinova AI ✦</div>
+    <a class="logo" href="index.html">Skinova AI ✦</a>
     <nav>
-      <a href="#analysis">Analiză</a>
-      <a href="#routine">Rutină</a>
-      <a href="#ingredients">Ingrediente</a>
-      <a href="#progress">Progres</a>
-      <a href="#pricing">Abonament</a>
+      <a href="analysis.html">Analiză</a>
+      <a href="routine.html">Rutină</a>
+      <a href="ingredients.html">Ingrediente</a>
+      <a href="progress.html">Progres</a>
+      <a href="assistant.html">Asistent AI</a>
+      <a href="pricing.html">Abonament</a>
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <div>
-        <span class="badge">AI Skin Analysis Platform</span>
-        <h1>Skinova AI</h1>
+  <main class="hero">
+    <div>
+      <span class="badge">AI Enabled Skin Care Platform</span>
+      <h1>Skinova AI</h1>
+      <p>
+        Platformă web inteligentă care analizează vizual tenul, oferă rezultate orientative
+        și construiește rutine personalizate de skincare pe baza ingredientelor active.
+      </p>
+
+      <a class="btn primary" href="analysis.html">Începe analiza</a>
+      <a class="btn secondary" href="routine.html">Vezi rutina AI</a>
+    </div>
+
+    <div class="phone-card">
+      <div class="phone-screen">
+        <div class="face-circle">✦</div>
+        <h2 style="font-size: 34px; color:#e84f9b; margin-bottom: 12px;">Raport AI</h2>
         <p>
-          Platformă web bazată pe inteligență artificială pentru analiza și monitorizarea tenului,
-          folosind imagini, răspunsuri personalizate și recomandări bazate pe ingrediente active.
+          Analiză vizuală, explicații clare și recomandări adaptate nevoilor pielii tale.
         </p>
-        <div class="buttons">
-          <a class="btn primary" href="#analysis">Începe analiza</a>
-          <a class="btn secondary" href="#how">Vezi cum funcționează</a>
-        </div>
-      </div>
 
-      <div class="phone-card">
-        <div class="phone-screen">
-          <div class="face-circle">🧴</div>
-          <h2 style="text-align:center; color:#e84f9b;">Raport estimativ</h2>
-          <p style="text-align:center; margin-top:10px; color:#27324a;">
-            Analiză vizuală + rutină adaptată nevoilor tale.
-          </p>
-
-          <div class="mini-stats">
-            <div class="mini-stat"><span>Textură</span><br><strong>medie</strong></div>
-            <div class="mini-stat"><span>Sebum</span><br><strong>ridicat</strong></div>
-            <div class="mini-stat"><span>Roșeață</span><br><strong>ușoară</strong></div>
-            <div class="mini-stat"><span>Acnee</span><br><strong>moderată</strong></div>
+        <div class="grid" style="grid-template-columns: 1fr 1fr; margin-top: 25px;">
+          <div class="card" style="padding: 16px;">
+            <strong style="color:#e84f9b;">Sebum</strong>
+            <p>ridicat</p>
+          </div>
+          <div class="card" style="padding: 16px;">
+            <strong style="color:#e84f9b;">Textură</strong>
+            <p>neuniformă</p>
+          </div>
+          <div class="card" style="padding: 16px;">
+            <strong style="color:#e84f9b;">Roșeață</strong>
+            <p>ușoară</p>
+          </div>
+          <div class="card" style="padding: 16px;">
+            <strong style="color:#e84f9b;">Acnee</strong>
+            <p>moderată</p>
           </div>
         </div>
       </div>
-    </section>
-
-    <section id="how">
-      <h2 class="section-title">Cum funcționează</h2>
-      <p class="section-subtitle">
-        Skinova AI combină analiza vizuală, datele introduse de utilizator și recomandările bazate pe ingrediente,
-        pentru a construi o rutină mai clară și mai responsabilă.
-      </p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>1. Încarci imaginea</h3>
-          <p>Utilizatorul încarcă o fotografie sau un video cu fața, realizat în condiții cât mai clare de lumină.</p>
-        </div>
-
-        <div class="card">
-          <h3>2. AI analizează</h3>
-          <p>Platforma identifică vizual elemente precum sebum, roșeață, acnee, comedoane sau textură neuniformă.</p>
-        </div>
-
-        <div class="card">
-          <h3>3. Primești rutina</h3>
-          <p>Sistemul generează recomandări orientative, explicate pe înțelesul utilizatorului.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="analysis">
-      <h2 class="section-title">Analiză AI a tenului</h2>
-      <p class="section-subtitle">
-        Această secțiune simulează funcționalitatea principală a platformei. Rezultatele sunt demonstrative.
-      </p>
-
-      <div class="analysis-box">
-        <div class="upload-area">
-          <h3>Încarcă o imagine pentru analiză</h3>
-          <p>Acceptăm fotografii tip selfie, preferabil fără filtre și cu lumină naturală.</p>
-          <input type="file" accept="image/*" onchange="startAnalysis()" />
-        </div>
-
-        <div id="loading" class="hidden" style="text-align:center; font-size:22px; color:#e84f9b;">
-          Se analizează imaginea...
-        </div>
-
-        <div class="results" id="results">
-          <div class="score-grid">
-            <div class="score"><span>Acnee</span><strong>moderată</strong></div>
-            <div class="score"><span>Sebum zona T</span><strong>ridicat</strong></div>
-            <div class="score"><span>Roșeață</span><strong>ușoară</strong></div>
-            <div class="score"><span>Textură</span><strong>neuniformă</strong></div>
-          </div>
-
-          <div class="warning">
-            Rezultatele sunt estimative și se bazează pe indicatori vizuali. Acestea nu reprezintă diagnostic medical.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="routine">
-      <h2 class="section-title">Rutină personalizată</h2>
-      <p class="section-subtitle">
-        Recomandările sunt formulate la nivel de ingrediente active, nu ca promovare directă de produse.
-      </p>
-
-      <div class="routine">
-        <div class="card">
-          <h3>Dimineața</h3>
-          <ul>
-            <li>gel de curățare blând, cu pH scăzut;</li>
-            <li>ser antioxidant cu vitamina C;</li>
-            <li>cremă lejeră, fără parfum;</li>
-            <li>SPF 30–50, aplicat zilnic.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Seara</h3>
-          <ul>
-            <li>curățare dublă, dacă s-a folosit SPF sau machiaj;</li>
-            <li>acid salicilic de 2–3 ori pe săptămână;</li>
-            <li>cremă reparatoare pentru bariera pielii;</li>
-            <li>evitarea combinării mai multor acizi activi.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="ingredients">
-      <h2 class="section-title">Ingredient Scanner</h2>
-      <p class="section-subtitle">
-        Utilizatorul poate încărca produsele pe care le folosește deja, iar AI-ul explică ingredientele și posibilele incompatibilități.
-      </p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Produs încărcat</h3>
-          <p>Ser exfoliant cu acid salicilic, niacinamide și extracte calmante.</p>
-        </div>
-
-        <div class="card">
-          <h3>Ce observă AI-ul</h3>
-          <p>Acidul salicilic poate ajuta în cazul porilor încărcați și al sebumului ridicat, dar trebuie introdus treptat.</p>
-        </div>
-
-        <div class="card">
-          <h3>Avertizare</h3>
-          <p>Nu se recomandă combinarea în aceeași seară cu alți acizi puternici sau retinoizi, pentru a evita iritarea pielii.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="progress">
-      <h2 class="section-title">My Skin Journey</h2>
-      <p class="section-subtitle">
-        Monitorizarea în timp ajută utilizatorul să observe evoluția pielii și să înțeleagă ce schimbări au efect.
-      </p>
-
-      <div class="timeline">
-        <div class="card">
-          <h3>Săptămâna 1</h3>
-          <p>Sebum ridicat în zona T, coșuri active pe frunte, rutină instabilă.</p>
-        </div>
-
-        <div class="card">
-          <h3>Săptămâna 3</h3>
-          <p>Mai puțină roșeață, rutină mai consecventă, utilizare constantă SPF.</p>
-        </div>
-
-        <div class="card">
-          <h3>Săptămâna 6</h3>
-          <p>Textură mai uniformă și mai puține imperfecțiuni vizibile.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="assistant">
-      <h2 class="section-title">Asistent AI personalizat</h2>
-      <p class="section-subtitle">
-        Asistentul pune întrebări simple pentru a adapta rutina la contextul real al utilizatorului.
-      </p>
-
-      <div class="chat">
-        <div class="bubble ai">Am observat mai multe imperfecțiuni în zona bărbiei față de analiza anterioară. Ai introdus un produs nou în rutina ta?</div>
-        <div class="bubble user">Da, am început să folosesc un exfoliant nou.</div>
-        <div class="bubble ai">Îți recomand să îl folosești doar de 2 ori pe săptămână și să eviți combinarea cu alți acizi activi în aceeași seară.</div>
-      </div>
-    </section>
-
-    <section id="pricing">
-      <h2 class="section-title">Abonament</h2>
-      <p class="section-subtitle">
-        Modelul de monetizare este bazat pe trial gratuit, apoi abonament lunar accesibil.
-      </p>
-
-      <div class="pricing">
-        <div class="card">
-          <h3>Trial gratuit</h3>
-          <div class="price">0 lei</div>
-          <p>30 de zile pentru testarea funcționalităților principale.</p>
-        </div>
-
-        <div class="card">
-          <h3>Premium</h3>
-          <div class="price">25 lei</div>
-          <p>Analize extinse, istoric, recomandări personalizate și monitorizare avansată.</p>
-        </div>
-      </div>
-    </section>
+    </div>
   </main>
 
+  <section class="page">
+    <h2>Ce face Skinova AI?</h2>
+    <p class="subtitle">
+      Prototipul demonstrează cum inteligența artificială poate transforma o rutină de skincare
+      confuză într-un proces personalizat, educativ și mai ușor de urmărit.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Analiză vizuală</h3>
+        <p>
+          Utilizatorul încarcă o imagine, iar platforma simulează analiza unor semne vizibile:
+          acnee, sebum, roșeață și textură.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Rutină personalizată</h3>
+        <p>
+          Recomandările sunt construite pe ingrediente active, nu pe promovarea directă a unor produse.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Monitorizare</h3>
+        <p>
+          Utilizatorul poate urmări evoluția pielii în timp și poate înțelege ce schimbări au efect.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    Skinova AI © 2026 | Prototip educațional pentru pitch AI Enabled Start-up
+    Skinova AI © 2026 | Prototip educațional AI Enabled Start-up
   </footer>
-
-  <script>
-    function closeModal() {
-      document.getElementById("disclaimerModal").style.display = "none";
-    }
-
-    function startAnalysis() {
-      const loading = document.getElementById("loading");
-      const results = document.getElementById("results");
-
-      results.style.display = "none";
-      loading.classList.remove("hidden");
-
-      setTimeout(() => {
-        loading.classList.add("hidden");
-        results.style.display = "block";
-      }, 1800);
-    }
-  </script>
 </body>
 </html>
