@@ -417,3 +417,67 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.profile-icon {
+  text-decoration: none;
+  color: #111;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(232,79,155,0.25);
+  border-radius: 999px;
+  padding: 10px 14px;
+}
+
+.menu-btn {
+  border: 1px solid rgba(232,79,155,0.25);
+  background: rgba(255,255,255,0.85);
+  color: #e84f9b;
+  font-size: 24px;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 300px;
+  height: 100vh;
+  background: rgba(255,255,255,0.97);
+  border-left: 1px solid rgba(232,79,155,0.22);
+  box-shadow: -20px 0 60px rgba(108,70,120,0.18);
+  z-index: 9998;
+  padding: 28px;
+  transition: right 0.3s ease;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+.side-menu h3 {
+  color: #e84f9b;
+  font-size: 26px;
+  margin-bottom: 22px;
+}
+
+.side-menu a {
+  display: block;
+  text-decoration: none;
+  color: #27324a;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(232,79,155,0.12);
+  font-size: 17px;
+}
+
+.close-menu {
+  float: right;
+  font-size: 24px;
+  background: transparent;
+  color: #e84f9b;
+  padding: 0;
+}
