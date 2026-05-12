@@ -50,48 +50,82 @@
 
     <div class="two-grid">
 
-      <div class="card">
+      <div class="card" id="authBox">
 
-        <h3>Autentificare</h3>
+  <h3>Autentificare</h3>
 
-        <input
-          type="email"
-          placeholder="Adresă de e-mail"
-          style="
-            width:100%;
-            padding:16px;
-            border-radius:18px;
-            border:1px solid rgba(232,79,155,0.25);
-            margin-top:18px;
-            margin-bottom:16px;
-            font-size:16px;
-            font-family:inherit;
-          "
-        />
+  <input
+    id="profileEmail"
+    type="email"
+    placeholder="Adresă de e-mail"
+    style="
+      width:100%;
+      padding:16px;
+      border-radius:18px;
+      border:1px solid rgba(232,79,155,0.25);
+      margin-top:18px;
+      margin-bottom:16px;
+      font-size:16px;
+      font-family:inherit;
+    "
+  />
 
-        <input
-          type="password"
-          placeholder="Parolă"
-          style="
-            width:100%;
-            padding:16px;
-            border-radius:18px;
-            border:1px solid rgba(232,79,155,0.25);
-            margin-bottom:18px;
-            font-size:16px;
-            font-family:inherit;
-          "
-        />
+  <input
+    id="profilePassword"
+    type="password"
+    placeholder="Parolă"
+    style="
+      width:100%;
+      padding:16px;
+      border-radius:18px;
+      border:1px solid rgba(232,79,155,0.25);
+      margin-bottom:18px;
+      font-size:16px;
+      font-family:inherit;
+    "
+  />
 
-        <button class="primary">
-          Conectează-te
-        </button>
+  <button class="primary" onclick="fakeLogin('login')">
+    Conectează-te
+  </button>
 
-        <button class="secondary" style="margin-top:12px;">
-          Creează cont
-        </button>
+  <button class="secondary" style="margin-top:12px;" onclick="fakeLogin('create')">
+    Creează cont
+  </button>
 
-      </div>
+  <div id="loginStatus" class="warning" style="display:none;"></div>
+
+</div>
+
+<div class="card" id="accountBox" style="display:none;">
+
+  <h3>Cont activ</h3>
+
+  <p style="margin-top:18px;">
+    <strong style="color:#e84f9b;">Autentificat ca:</strong>
+    <span id="savedEmail"></span>
+  </p>
+
+  <p style="margin-top:14px;">
+    <strong style="color:#e84f9b;">Plan activ:</strong>
+    Trial gratuit
+  </p>
+
+  <p style="margin-top:14px;">
+    <strong style="color:#e84f9b;">Analize salvate:</strong>
+    0
+  </p>
+
+  <p style="margin-top:14px;">
+    <strong style="color:#e84f9b;">Produse salvate:</strong>
+    0
+  </p>
+
+  <button class="secondary" style="margin-top:18px;" onclick="logoutUser()">
+    Deconectează-te
+  </button>
+
+</div>
 
       <div class="card">
 
