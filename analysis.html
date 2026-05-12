@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skinova AI | Analiză</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="index.html">Skinova AI ✦</a>
+
+    <nav>
+      <a href="analysis.html">Analiză</a>
+      <a href="routine.html">Rutină</a>
+      <a href="ingredients.html">Ingrediente</a>
+      <a href="progress.html">Progres</a>
+      <a href="assistant.html">Asistent AI</a>
+      <a href="pricing.html">Abonament</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h2>AI Skin Analysis</h2>
+
+    <p class="subtitle">
+      Încarcă o fotografie pentru a simula analiza vizuală a pielii.
+      Rezultatele sunt orientative și nu reprezintă diagnostic medical.
+    </p>
+
+    <div class="upload-box">
+      <div class="upload-area">
+        <h3 style="margin-bottom:15px; color:#e84f9b;">
+          Upload imagine
+        </h3>
+
+        <p style="margin-bottom:18px;">
+          Pentru rezultate mai clare, recomandăm lumină naturală și lipsa filtrelor.
+        </p>
+
+        <input type="file" accept="image/*" onchange="startAnalysis()" />
+      </div>
+
+      <div id="loading" style="display:none;">
+        <h3 style="color:#e84f9b;">
+          Analiza AI este în desfășurare...
+        </h3>
+
+        <p style="margin-top:10px;">
+          Detectăm sebum, textură, roșeață și imperfecțiuni.
+        </p>
+      </div>
+
+      <div class="results" id="results">
+        <div class="score-grid">
+          <div class="score">
+            <span>Sebum</span>
+            <strong>ridicat</strong>
+          </div>
+
+          <div class="score">
+            <span>Acnee</span>
+            <strong>moderată</strong>
+          </div>
+
+          <div class="score">
+            <span>Roșeață</span>
+            <strong>ușoară</strong>
+          </div>
+
+          <div class="score">
+            <span>Textură</span>
+            <strong>neuniformă</strong>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Explicație AI</h3>
+
+          <p>
+            AI-ul a detectat exces de sebum în zona T și mici imperfecțiuni active.
+            De asemenea, textura pielii pare ușor neuniformă, iar roșeața indică posibilă sensibilitate temporară.
+          </p>
+        </div>
+
+        <div class="warning">
+          Rezultatele sunt estimative și pot varia în funcție de lumină,
+          calitatea camerei și condițiile pielii din momentul fotografiei.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Skinova AI © 2026
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
